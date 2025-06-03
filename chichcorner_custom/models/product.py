@@ -18,28 +18,22 @@ class ProductProduct(models.Model):
 class ChicLot(models.Model):
     _name = 'chic.lot'
     _description = 'Lots de fabrication'
-    
 
     date_arrivage = fields.Datetime('Date arrivage', required=True)
     name = fields.Char('N° de lot', required=True, index=True)
     date_peremption = fields.Datetime('Date péremption', required=True, index=True)
     product_id = fields.Many2one('product.product', index=True)
 
-
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    pricelist_price = fields.Float(
-        string="Prix de vente",
-        compute="_compute_pricelist_price",
-        store=False
-    )
-    copied_category = fields.Many2one(
-        'product.category',
-        string="Catégorie de Produit",
-        compute='_compute_copied_category',
-        store=True
-    )
+    #tc21_ip = fields.Char(string="TC21 IP Address", help="IP address of the Zebra TC21 device")
+
+    #encoded_barcode = fields.Char(string="Encoded Barcode",compute="_compute_encoded_barcode",store=True,)
+
+    pricelist_price = fields.Float(string="Prix de vente",compute="_compute_pricelist_price",store=False)
+    copied_category = fields.Many2one('product.category',string="Catégorie de Produit",compute='_compute_copied_category',store=True)
+
 
     @api.depends('categ_id')
     def _compute_copied_category(self):
