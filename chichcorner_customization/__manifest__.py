@@ -9,6 +9,8 @@
     'depends': ['base', 'product', 'account', 'stock', 'sale', 'purchase', 'sale_stock', 'purchase_stock'],
     'data': [
         'security/security.xml',
+        'data/cron.xml',
+        'views/stock_website_orders.xml',
         'security/ir.model.access.csv',
         'report/custome_paper_format.xml',
         'views/stock_quant_view.xml',
